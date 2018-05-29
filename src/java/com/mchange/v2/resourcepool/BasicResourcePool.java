@@ -1463,7 +1463,7 @@ class BasicResourcePool implements ResourcePool
                     _recheckResizePool();
 
                 this.wait(timeout);
-                if (timeout > 0 && System.currentTimeMillis() - start > timeout)
+                if (timeout > 0 && System.currentTimeMillis() - start >= timeout)
                     throw new TimeoutException("A client timed out while waiting to acquire a resource from " + this + " -- timeout at awaitAvailable()");
                 if (force_kill_acquires)
                     throw new CannotAcquireResourceException("A ResourcePool could not acquire a resource from its primary factory or source.", getLastAcquisitionFailure());
